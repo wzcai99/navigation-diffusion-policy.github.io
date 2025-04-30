@@ -133,5 +133,11 @@ body {
   font-size: smaller;
 }
 
+video::-webkit-media-controls-volume-slider {
+  display: none;
+}
+video::-webkit-media-controls-mute-button {
+  display: none;
+}
 
 
