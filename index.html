@@ -56,7 +56,7 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block"><a href="https://wzcai99.github.io/">Wenzhe Cai</a><sup>1</sup>,</span>
-              <span class="author-block"><a href="https://scholar.google.com/citations?user=5Mtc0ZoAAAAJ&hl=en">Jiaqi Peng</a><sup>1,2</sup>,</span>
+              <span class="author-block"><a href="https://github.com/steinate">Jiaqi Peng</a><sup>1,2</sup>,</span>
               <span class="author-block"><a href="https://yuqiang-yang.github.io/">Yuqiang Yang</a><sup>1</sup>,</span>
               <span class="author-block"><a href="https://github.com/command-z-z">Yujian Zhang</a><sup>3</sup>,</span>
               <span class="author-block"><a href="https://scholar.google.com.hk/citations?user=Wx8ChLcAAAAJ&hl=zh-CN">Meng Wei</a><sup>1,4</sup>,</span>
@@ -79,7 +79,7 @@
                       
                       <!-- ArXiv abstract Link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                        <a href="static/pdfs/paper.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="ai ai-arxiv"></i>
@@ -90,7 +90,7 @@
 
                     <!-- Supplementary PDF link -->
                     <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      <a href="static/pdfs/paper.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
@@ -101,7 +101,7 @@
                   
                   <!-- Video Link. -->
                   <span class="link-block">
-                    <a href="https://youtu.be/ZiiIZaXXkKE"
+                    <a href="https://youtu.be/vfUnxD9WfoA"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                           <i class="fab fa-youtube"></i>
@@ -136,7 +136,7 @@
     <div class="hero-body">
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
-        <source src="https://www.youtube.com/embed/ZiiIZaXXkKE?si=-5GDZXIp-qHaKVM9"
+        <source src="./static/videos/supplimentary_demo.mp4"
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
@@ -171,18 +171,29 @@
 <!-- Image carousel -->
 <!-- End image carousel -->
 
-<!-- Architecture -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered has-text-centered">
+<!-- Framework. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-11">
         <h2 class="title is-3">Approach</h2>
-        <div class="column is-four-fifths">
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe  src="static/images/carouse1.jpg" width="80%">
-            </iframe>
-          </div>
+        <img src="./static/images/approach.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-11">
+        <div class="content has-text-justified">
+          <p><b>(a) NavDP is trained with the simulation data from two types of supervision: </b></p>
+          <ul>
+            <li>A Diffusion Policy head models the distribution of expert demonstrations recorded in the dataset.</li>
+            <li>A Critic Function head that can evaluate the safety of any navigation trajectory. This is learned from the ESDF map in the simulation. </li>
+          </ul>
+          <p><b>(b) Two-stage Inference for Safety. </b>Given a supported navigation goal, the diffusion head first generates a batch of available trajectories, then the critic head assigns scores for each trajectory.
+          We select the best to execute. This procedure balance the generation diversity and deployment safety.</p>
+          <p><b>(c) Real-to-Sim Reconstruction Bridges the Sim-to-Real Gap. </b> To mitigate the sim-to-real gap for navigation, 
+          we use 3DGS to reconstruct a specified scene and follow the same pipeline to generate in-domain navigation datasets. </p>
         </div>
       </div>
     </div>
@@ -190,53 +201,77 @@
 </section>
 <!-- End youtube video -->
 
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
+ 
 <!-- Video carousel -->
-<section class="hero is-small">
+<section class="hero is-small is light">
   <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
+    <div class="container is-centered has-text-centered">
+      <h2 class="title is-3">Large-Scale Simulation Navigation Data</h2>
+      <img src="./static/images/dataset_table.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+      <div id="results-carousel" class="carousel results-carousel is-centered has-text-centered is-max-desktop content">
+        
         <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
+          <video poster="" id="video1" autoplay controls muted loop width="100%">
             <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
+            <source src="static/videos/data_demo1.mp4"
             type="video/mp4">
           </video>
         </div>
         <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
+          <video poster="" id="video2" autoplay controls muted loop width="100%">
             <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
+            <source src="static/videos/data_demo2.mp4"
             type="video/mp4">
           </video>
         </div>
         <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+          <video poster="" id="video3" autoplay controls muted loop width="100%">\
             <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
+            <source src="static/videos/data_demo3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video4">
+          <video poster="" id="video4" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/data_demo4.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video5">
+          <video poster="" id="video5" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/data_demo5.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video6">
+          <video poster="" id="video6" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/data_demo6.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video7">
+          <video poster="" id="video7" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/data_demo7.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video8">
+          <video poster="" id="video8" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/data_demo8.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video9">
+          <video poster="" id="video9" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/data_demo9.mp4"
             type="video/mp4">
           </video>
         </div>
@@ -246,13 +281,155 @@
 </section>
 <!-- End video carousel -->
 
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-centered has-text-centered">
+      <h2 class="title is-3">Evaluation in Simulation</h2>
+      <div id="results-carousel" class="carousel results-carousel is-centered has-text-centered is-max-desktop content">
+        
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop width="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/sim_demo1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop width="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/sim_demo2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/sim_demo3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video4">
+          <video poster="" id="video4" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/sim_demo4.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video5">
+          <video poster="" id="video5" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/sim_demo5.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video6">
+          <video poster="" id="video6" autoplay controls muted loop width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/sim_demo6.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-centered has-text-centered">
+      <h2 class="title is-3">In-the-Wild Real-World Navigation</h2>
+      <div id="results-carousel" class="carousel results-carousel is-centered has-text-centered is-max-desktop content">
+        
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted width="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/real-fast1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted width="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/real-fast2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-fast3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video4">
+          <video poster="" id="video4" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-fast4.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video5">
+          <video poster="" id="video5" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-middle1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video6">
+          <video poster="" id="video6" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-middle2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video7">
+          <video poster="" id="video7" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-middle3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
 
+        <div class="item item-video8">
+          <video poster="" id="video8" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-middle4.mp4"
+            type="video/mp4">
+          </video>
+        </div>
 
+        <div class="item item-video9">
+          <video poster="" id="video9" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-long1.mp4"
+            type="video/mp4">
+          </video>
+        </div>
 
+        <div class="item item-video10">
+          <video poster="" id="video9" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-long2.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-video11">
+          <video poster="" id="video9" autoplay controls muted width="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/real-long3.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End video carousel -->
 
 <!-- Paper poster -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title">Poster</h2>
@@ -262,7 +439,7 @@
         
       </div>
     </div>
-  </section>
+  </section> -->
 <!--End paper poster -->
 
 
@@ -270,7 +447,12 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@article{cai2025navdp,
+  title = {NavDP: Learning Sim-to-Real Navigation Diffusion Policy with Privileged Information Guidance},
+  author = {Wenzhe Cai, Jiaqi Peng, Yuqiang Yang, Yujian Zhang, Meng Wei, Hanqing Wang, Yilun Chen, Tai Wang and Jiangmiao Pang},
+  booktitle = {Arxiv},
+  year = {2025},
+}</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
